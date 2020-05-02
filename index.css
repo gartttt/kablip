@@ -1,0 +1,260 @@
+:root{
+  --bg-color: rgb(30, 30, 30);
+  --btn-color: rgb(0, 255, 0);
+  --btn-border-color: rgb(0, 200, 0);
+  --btn-hov-color: rgb(0, 235, 0);
+  --btn-act-color: rgb(0, 225, 0);
+  --section-padding: 45px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+*{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  transition: all 0.25s;
+}
+
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  overflow-y:scroll;
+}
+
+#scroll-container{
+  overflow: hidden;
+  background-color: var(--bg-color);
+  transform: translateY(0);
+  transition: transform 1s;
+}
+
+section{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+/* section:nth-of-type(3n+2){
+  background-color: var(--bg-color);
+}
+section:nth-of-type(3n+2) *{
+  color: white;
+}
+section:nth-of-type(3n){
+  background-color: #0074D9;
+}
+section:nth-of-type(3n) *{
+  color: #FFDC00;
+}
+section:nth-of-type(3n+1){
+  background-color: #B10DC9;
+}
+section:nth-of-type(3n+1) *{
+  color: rgb(0, 255, 0);
+} */
+section:nth-of-type(2n+1){
+  background-color: white;
+}
+section:nth-of-type(2n+1) *{
+  color: var(--bg-color);
+}
+
+section.text{
+  padding: var(--section-padding);
+  font-size: 25px;
+  box-sizing: border-box;
+}
+section.text > *{
+  /* margin-left: var(--section-padding); */
+  /* margin-right: var(--section-padding); */
+}
+section.text > h1{
+  /* margin-top: var(--section-padding); */
+}
+section.center{
+  position: relative;
+}
+div.center{
+  position: absolute;
+  width: 70vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1{
+  margin: 0;
+  font-size: 2em;
+}
+
+button, a.button{
+  background-color: var(--btn-color);
+  color: white;
+  padding: 16px;
+  font-size: 20px;
+  border: 0;
+  border-bottom: 5px solid var(--btn-border-color);
+  cursor: pointer;
+  user-select: none;
+  outline: 0;
+  color: white !important;
+  transition: background 0.25s, color 0.25s, border 0.25s, margin 0.25s;
+}
+button:hover{
+  background-color: var(--btn-hov-color);
+}
+button:active{
+  background-color: var(--btn-act-color);
+  border-bottom-width: 2px;
+  /* margin-bottom: 3px; */
+}
+
+img{
+  width: 400px;
+  border-radius: 10px;
+  /* margin-right: 34px; */
+  float: right;
+}
+
+div.gallery{
+  float: none;
+  display: block;
+}
+div.gallery img{
+  float: none;
+  display: inline-block;
+  width: 30vw;
+  height: 20vw;
+}
+
+img.icon{
+  filter: contrast(100%);
+}
+
+svg.icon{
+  width: 22px;
+  height: 22px;
+}
+
+a {
+  color: var(--btn-color) !important;
+}
+
+iframe{
+  border: 0;
+  overflow: hidden;
+  width: 365px;
+  border-radius: 5px;
+  height: calc(100vh - 300px);
+}
+
+#title-section{
+  /* box-shadow: 0px 0px 100px 5px black inset; */
+  overflow: hidden;
+  position: relative;
+}
+
+#title-section *{
+  color: rgb(255, 255, 255);
+}
+
+#title-container{
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  font-size: 80px;
+  transform: translate(-50%, -50%);
+}
+
+#title{
+  text-shadow: 0 0 50px rgba(20, 20, 20, 0.2);
+}
+
+#kablip-video{
+  /* position: absolute; */
+  /* transform: translate(-50%, -50%); */
+  /* top: 50vh; */
+  /* left: 50vw; */
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  object-fit: cover;
+}
+
+#download-container{
+  margin: 0 auto;
+  text-align: center;
+}
+
+@keyframes hovering{
+    0%{
+      transform: translate(-50%, 0);
+    }
+    50%{
+      transform: translate(-50%, -15px);
+    }
+    100%{
+      transform: translate(-50%, 0);
+    }
+}
+
+.page-navigation{
+  background: rgba(50, 50, 50, 0.5);
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  border: 0;
+  border-radius: 100px;
+  padding: 10px;
+  font-size: 18px;
+  animation-play-state: running;
+  /* vertical-align: middle; */
+  /* width: 40px; */
+  /* height: 40px; */
+}
+
+.page-navigation.hidden{
+  animation:none !important;
+  transform: translate(-50%, 0) !important;
+}
+
+.page-navigation:hover{
+    background-color: white;
+    color:var(--btn-color) !important;
+}
+
+.page-navigation:active{
+    /* background-color: var(--btn-hov-color); */
+}
+
+.page-nav-text{
+  /* font-size: 18px; */
+  vertical-align:bottom;
+  color: white;
+  overflow: hidden;
+  width: 110px;
+  display: inline-block;
+  /* top: -10px; */
+}
+
+.page-navigation.hidden .page-nav-text{
+    width: 0;
+}
+
+.page-navigation:hover .page-nav-text{
+  color:var(--btn-color);
+}
+
+#page-up{
+  top: 10px;
+}
+#page-down{
+  bottom: 10px;
+  animation: hovering 2.5s ease-in-out infinite;
+}
