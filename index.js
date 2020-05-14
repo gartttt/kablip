@@ -6,6 +6,7 @@ $(function(){
   let value = 0;
   let section = 0;
   let scrolling = false;
+  let scrollDisabled = false;
   const threshold = 100;
   let lowThreshold = false;
 
@@ -29,11 +30,16 @@ $(function(){
     $("#kablip-video")[0].pause();
   }
 
+  function updateFullscreenImages(){
+    $("img.fullscreen").css("top",(value * -1)+"px");
+  }
+
   topPage();
   $(document).on("mousewheel swipe", onMouseScroll);
   $(window).resize(function(){
     value = -section * $(window).height();
     $("#scroll-container").css("transform","translateY("+value+"px)");
+    updateFullscreenImages();
   });
   document.addEventListener('mousewheel', function(e) {
     // console.log(e.wheelDelta);
@@ -45,7 +51,7 @@ $(function(){
   function onMouseScroll(e){
     // e.preventDefault();
 
-    if(!scrolling || e.button){
+    if((!scrolling || e.button) && !scrollDisabled ){
       scrolling = true;
       setTimeout(function(){
         scrolling = false;
@@ -88,5 +94,11 @@ $(function(){
   });
   $("#page-down").click(function(){
     onMouseScroll({originalEvent:{wheelDelta:-threshold-1}, button:true});
+  });
+
+  $("img").click(function(){
+    $(this).toggleClass("fullscreen");
+    updateFullscreenImages();
+    scrollDisabled = $("img.fullscreen").length > 0;
   });
 });

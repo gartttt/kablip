@@ -57,12 +57,12 @@ section:nth-of-type(3n+1){
 section:nth-of-type(3n+1) *{
   color: rgb(0, 255, 0);
 } */
-section:nth-of-type(2n+1){
+/* section:nth-of-type(2n+1){
   background-color: white;
 }
 section:nth-of-type(2n+1) *{
   color: var(--bg-color);
-}
+} */
 
 section.text{
   padding: var(--section-padding);
@@ -93,6 +93,7 @@ h1{
 }
 
 button, a.button{
+  text-decoration: none;
   background-color: var(--btn-color);
   color: white;
   padding: 16px;
@@ -105,10 +106,10 @@ button, a.button{
   color: white !important;
   transition: background 0.25s, color 0.25s, border 0.25s, margin 0.25s;
 }
-button:hover{
+a.button:hover, button:hover{
   background-color: var(--btn-hov-color);
 }
-button:active{
+a.button:active, button:active{
   background-color: var(--btn-act-color);
   border-bottom-width: 2px;
   /* margin-bottom: 3px; */
@@ -119,6 +120,17 @@ img{
   border-radius: 10px;
   /* margin-right: 34px; */
   float: right;
+  cursor: zoom-in;
+
+}
+img.fullscreen{
+  width: 100vw !important;
+  height: 100vh !important;
+  position: absolute;
+  border-radius: 0;
+  left: 0;
+  cursor: zoom-out;
+  z-index: 2;
 }
 
 div.gallery{
@@ -151,12 +163,15 @@ iframe{
   width: 365px;
   border-radius: 5px;
   height: calc(100vh - 300px);
+  float: right;
+  margin-left: 25px;
 }
 
 #title-section{
   /* box-shadow: 0px 0px 100px 5px black inset; */
   overflow: hidden;
   position: relative;
+  background-color: rgb(255, 0, 255);
 }
 
 #title-section *{
@@ -253,8 +268,10 @@ iframe{
 
 #page-up{
   top: 10px;
+  z-index: 1;
 }
 #page-down{
   bottom: 10px;
   animation: hovering 2.5s ease-in-out infinite;
+  z-index: 1;
 }
